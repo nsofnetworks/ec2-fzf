@@ -2,11 +2,11 @@ service: ec2-fzf
 
 custom:
     # Choose your bucket name here, it will be created for you.
-    bucket: ec2-cache.binaris.com
+    bucket: ec2-cache.nsofnetworks
     # Specify a list of relevant tags for finding instances (space separated)
-    tags: "realm service Name"
+    tags: "zone service Name"
     # SSH IAM Group (IAM group that should be allowed to use this tool)
-    group: "dev"
+    group: "developers"
 
 provider:
   name: aws

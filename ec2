@@ -10,7 +10,7 @@ function get_cache() {
     aws s3 cp --quiet s3://ec2-cache.nsofnetworks/instances.fzf >(cat)
 }
 
-chosen=$(get_cache | fzf)
+chosen=$(get_cache | fzf -q $zone)
 
 export key=$(echo $chosen | rev | cut -d ' ' -f1 | rev)
 export ip=$(echo $chosen | rev | cut -d ' ' -f2 | rev)

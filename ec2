@@ -4,6 +4,8 @@
 # - fzf
 # - aws cli
 
+DEFAULT_USER=ubuntu
+
 function get_cache() {
     aws s3 cp --quiet s3://ec2-cache.nsofnetworks/instances.fzf >(cat)
 }
@@ -13,4 +15,6 @@ chosen=$(get_cache | fzf)
 export key=$(echo $chosen | rev | cut -d ' ' -f1 | rev)
 export ip=$(echo $chosen | rev | cut -d ' ' -f2 | rev)
 
-ssh -i ~/.ssh/$key.pem ubuntu@$ip
+echo SSHing into $chosen
+
+ssh -i ~/.ssh/$key.pem $DEFAULT_USER@$ip
